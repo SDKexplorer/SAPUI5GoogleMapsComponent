@@ -1,7 +1,6 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"MapsSample/controller/BaseController"
-], function(Controller, BaseController) {
+	"sap/ui/core/mvc/Controller"
+], function(Controller) {
 	"use strict";
 
 	return Controller.extend("MapsSample.controller.View1", {
