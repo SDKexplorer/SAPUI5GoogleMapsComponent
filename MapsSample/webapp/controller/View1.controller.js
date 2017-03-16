@@ -6,7 +6,6 @@ sap.ui.define([
 	return Controller.extend("MapsSample.controller.View1", {
 	
 	onAfterRendering:function(){
-		BaseController.prototype.onInit.call(this);
 		this.populateList();
 	},
 	
