@@ -16,7 +16,8 @@ sap.ui.define([
 		populateList: function() {
 			var map = this.byId("map");
 			map.addPin(4, 7);
-			map.addPin(7, 88);
+			map.addPin(7, 35);
+			map.addPin(7, 22);
 
 			var list = this.byId("myList");
 			var listItem = new sap.m.ActionListItem({
@@ -34,7 +35,6 @@ sap.ui.define([
 			var model = binding.getModel();
 			var path = binding.getPath();
 			var marker = model.getProperty(path);
-			
 			that.createPopover(marker).openBy(event.getSource());
 
 		},
@@ -52,6 +52,10 @@ sap.ui.define([
 						new sap.m.Button({
 							text: "Highlight",
 							press: this.highlightItem.bind(this)
+						}),
+						new sap.m.Button({
+							text: "Center",
+							press: this.centerItem.bind(this)
 						})
 					]
 				}).data("marker", marker);
@@ -68,6 +72,12 @@ sap.ui.define([
 		highlightItem: function(event) {
 			var map = this.byId("map");
 			map.highlightPin(event.getSource().getParent().data("marker"));
+		},
+		
+		centerItem: function(event){
+			var map = this.byId("map");
+			map.setZoom(10);
+			map.toPin(event.getSource().getParent().data("marker"));
 		},
 
 		updateBinding: function() {
