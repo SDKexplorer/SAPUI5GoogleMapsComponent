@@ -26,28 +26,19 @@ sap.ui.define([
 		list.bindItems("/markers",listItem);
 	},
 	
-	deleteItem: function(event){
-		var popover = new sap.m.Popover({
-			content: [
-					new Button({text: "Delete"}),
-					new Button({text: "Highlight"})
-				]
-		});
-		popover.openBy(event.getSource());
-		
+	actionsOnItem: function(event){
 		var binding = event.getParameter("listItem").getBindingContext(); 
 		var model = binding.getModel(); 
 		var path = binding.getPath(); 
 		var marker = model.getProperty(path);
 		
-		var map = this.byId("map");
-		map.highlightPin(marker);
-
-		var list = this.byId("myList");
-		var listItem = new sap.m.ActionListItem({text: "{id}"});
-		var model = map.getModel();
-		list.setModel(model);
-		list.bindItems("/markers",listItem);
+		var popover = new sap.m.Popover({
+			content: [
+					new sap.m.Button({text: "Delete"}),
+					new sap.m.Button({text: "Highlight"})
+				]
+		});
+		popover.openBy(event.getSource());
 	},
 	
 	addItem: function(){
