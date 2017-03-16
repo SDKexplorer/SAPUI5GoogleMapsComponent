@@ -34,11 +34,22 @@ sap.ui.define([
 		
 		var popover = new sap.m.Popover({
 			content: [
-					new sap.m.Button({text: "Delete"}),
+					new sap.m.Button({text: "Delete", press: Controller.deleteItem}),
 					new sap.m.Button({text: "Highlight"})
 				]
 		});
 		popover.openBy(event.getSource());
+	},
+		
+	deleteItem: function(marker){
+		var map = this.byId("map");
+		map.deletePin(marker);
+
+		var list = this.byId("myList");
+		var listItem = new sap.m.ActionListItem({text: "{id}"});
+		var model = map.getModel();
+		list.setModel(model);
+		list.bindItems("/markers",listItem);
 	},
 	
 	addItem: function(){
