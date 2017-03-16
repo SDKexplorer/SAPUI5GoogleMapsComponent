@@ -1,0 +1,26 @@
+<mvc:View controllerName="MapsSample.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:maps="MapsSample.custom"
+	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<l:HorizontalLayout class="sapUiSmallMargin" >
+					<Title text="Nightmode"></Title>
+					<Switch state="false" customTextOn="Yes" customTextOff="No" change="toggleNightMode">
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+					</Switch>
+					</l:HorizontalLayout>
+					<maps:GoogleMap id="map" width="40%"></maps:GoogleMap>
+					<List id="myList" width="40%" itemPress="deleteItem"></List>
+					<l:HorizontalLayout class="sapUiSmallMargin" >
+						<Input type="Number" id="lat" placeholder="latitude"></Input>
+						<Input type="Number" id="lng" placeholder="longitude"></Input>
+						<Button press="addItem" text="Add"></Button>
+					</l:HorizontalLayout>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
