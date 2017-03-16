@@ -82,6 +82,9 @@ sap.ui.define([
 					highlightPin: {
 						
 					},
+					toPin: {
+						
+					},
 					switchNightMode: {
 						parameters: {
 							isSet: {
@@ -232,6 +235,10 @@ sap.ui.define([
 			        marker.setAnimation(null);
 			    }
 			},
+			
+			toPin: function(marker){
+				this._getMapsControl().panTo(marker.position);
+			},
 
 			attachMapEvents: function(map) {
 				var sapComponent = this;
@@ -298,10 +305,6 @@ sap.ui.define([
 
 			getPin: function(id) {
 				return this.model.markers[id];
-			},
-			
-			navToPin: function(){
-				
 			},
 
 			deletePin: function(id) {
