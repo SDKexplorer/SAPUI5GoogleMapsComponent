@@ -27,6 +27,14 @@ sap.ui.define([
 	},
 	
 	deleteItem: function(event){
+		var popover = new sap.m.Popover({
+			content: [
+					new Button({text: "Delete"}),
+					new Button({text: "Highlight"})
+				]
+		});
+		popover.openBy(event.getSource());
+		
 		var binding = event.getParameter("listItem").getBindingContext(); 
 		var model = binding.getModel(); 
 		var path = binding.getPath(); 
